@@ -1,0 +1,33 @@
+<!--  app/views/trips/show.html.erb -->
+<h1>Details about <em><%= @trip.name %></em></h1>
+
+<h3>Duration (days): <%= @trip.duration %></h3>
+
+</br>
+<h3>Activities</h3>
+<ul id="activities">
+<% @trip.activities.each do |activity| %>
+  <li>
+    <%= link_to activity.name, activity_path(activity) %>
+    <%= link_to 'Remove', delete_activity_path(@trip, activity), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-outline-danger' %>
+  </li>
+<% end %>
+</ul>
+
+<div class="row">
+  <%= link_to 'Edit', edit_trip_path(@trip), :class => 'btn btn-new col-2' %>
+  <%= link_to 'Delete', trip_path(@trip), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
+  <%= link_to 'Back to trip list', trips_path, :class => 'btn btn-new col-2' %>
+</div>
+
+<% if @unique_activities.length > 0 %>
+<%= form_tag add_activity_path(@trip), method: 'post', :class => 'form' do %>
+  <%= label :activity, :id, 'Activities Available', :class => 'col-form-label'  %>
+  <%= select :activity, :id, @unique_activities.map { |city| [city.name, city.id] }, {}, {:class => 'form-control'} %>
+  <br/>
+    <%= submit_tag 'Add Activity to my Trip', :class => 'btn btn-new' %>
+<% end %>
+<% else %>
+  <p>There are no activities available.</p>
+  <%= link_to 'Add new activity', new_activity_path, :class => 'btn btn-new' %>
+<% end %>

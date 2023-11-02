@@ -1,0 +1,28 @@
+<!--  This file is app/views/trips/index.html.erb -->
+<h2>List of Trips</h2>
+
+<table class="table table-striped col-md-12" id="trips">
+  <thead>
+    <tr>
+      <th>Trip</th>
+      <th>Duration (days)</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @trips.each do |trip| %>
+      <tr>
+        <td>
+          <%= trip.name %>
+        </td>
+        <td>
+          <%= trip.duration %>
+        </td>
+        <td>
+          <%= link_to "More about #{trip.name}", trip_path(trip) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Add new trip', new_trip_path, :class => 'btn btn-new' %>

@@ -1,0 +1,28 @@
+<!--  This file is app/views/activities/index.html.erb -->
+<h2>List of Activities</h2>
+
+<table class="table table-striped col-md-12" id="activities">
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Address</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td>
+          <%= activity.name %>
+        </td>
+        <td>
+          <%= activity.address %>
+        </td>
+        <td>
+          <%= link_to "More about #{activity.name}", activity_path(activity) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Add new activity', new_activity_path, :class => 'btn btn-new' %>

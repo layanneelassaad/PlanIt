@@ -1,0 +1,10 @@
+<h2>Edit Existing Trip</h2>
+<%= form_tag trip_path(@trip), :method => :put do %>
+  <%= label :trip, :name, 'Name', :class => 'col-form-label' %>
+  <%= text_field :trip, :name, :class => 'form-control' %>
+  <%= label :trip, :duration, 'Duration (days)', :class => 'col-form-label' %>
+  <%= number_field :trip, :duration, :class => 'form-control' %>
+  <br/>
+ <%= submit_tag 'Update Trip Info', :class => 'btn btn-new' %>
+  <%= link_to 'Cancel', trips_path, :class => 'btn btn-secondary' %>
+<% end %>

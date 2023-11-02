@@ -1,0 +1,11 @@
+<h2>Create New Trip</h2>
+
+<%= form_tag trips_path, :class => 'form' do %>
+  <%= label :trip, :name, 'Name', :class => 'col-form-label' %>
+  <%= text_field :trip, :name, :class => 'form-control' %>
+  <%= label :trip, :duration, 'Duration', :class => 'col-form-label' %>
+  <%= number_field :trip, :duration, :class => 'form-control' %>
+  <br/>
+  <%= submit_tag 'Save Changes', :class => 'btn btn-new' %>
+  <%= link_to 'Cancel', trips_path, :class => 'btn btn-secondary' %>
+<% end %>

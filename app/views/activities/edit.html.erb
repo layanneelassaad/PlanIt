@@ -1,0 +1,14 @@
+<h2>Edit Existing Activity</h2>
+<%= form_tag activity_path(@activity), :method => :put do %>
+  <%= label :activity, :name, 'Name', :class => 'col-form-label' %>
+  <%= text_field :activity, :name, :class => 'form-control' %>
+  <%= label :activity, :address, 'Address', :class => 'col-form-label' %>
+  <%= text_field :activity, :address, :class => 'form-control' %>
+  <%= label :activity, :description, 'Description', :class => 'col-form-label' %>
+  <%= text_area :activity, :description, :class => 'form-control' %>
+  <%= label :activity, :url, 'Link', :class => 'col-form-label' %>
+  <%= text_field :activity, :url, :class => 'form-control' %>
+  <br/>
+ <%= submit_tag 'Update Activity Info', :class => 'btn btn-new' %>
+  <%= link_to 'Cancel', activities_path, :class => 'btn btn-secondary' %>
+<% end %>

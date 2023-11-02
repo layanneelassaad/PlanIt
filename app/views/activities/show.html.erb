@@ -1,0 +1,21 @@
+<!--  app/views/activities/show.html.erb -->
+<h2>Details about <em><%= @activity.name %></em></h2>
+
+<h3>Address:</h3>
+<p id="address">
+  <%= simple_format @activity.address %>
+</p>
+
+<h3>Description:</h3>
+<p id="description">
+  <%= simple_format @activity.description %>
+</p>
+
+<h3>Link:</h3>
+<%= link_to @activity.url, @activity.url, target: "_blank" %>
+
+<div class="row">
+  <%= link_to 'Edit', edit_activity_path(@activity), :class => 'btn btn-new col-2' %>
+  <%= link_to 'Delete', activity_path(@activity), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
+  <%= link_to 'Back to activity list', activities_path, :class => 'btn btn-new col-2' %>
+</div>
